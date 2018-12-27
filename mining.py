@@ -6,9 +6,9 @@ import os
 # Constants
 DEBUG = True
 COMPETITION = "inf131-data-mining"
-RES_FILE = "y_pred.csv"
-TRAINING_DATA = "train.csv"
-TEST_DATA = "test.csv"
+RES_FILE = "../y_pred.csv"
+TRAINING_DATA = "../train.csv"
+TEST_DATA = "../test.csv"
 
 # Helper Functions
 def errlog(error):
