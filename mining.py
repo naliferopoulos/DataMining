@@ -1,7 +1,10 @@
-# Datasets
+# @thal @gkara @nalif: Warning! If you try to run me without activating the venv, you deserve the 5 seconds of panic and dread that will follow. (>^-^)>
+
+# For dataset processing
 import pandas as pd
-# System Functions
-import os
+
+# For system functions
+import sys
 
 # Constants
 DEBUG = True
@@ -14,11 +17,11 @@ TEST_DATA = "../test.csv"
 def errlog(error):
     print("")
     print("======ERROR START======")
-    print("Halting and Catching Fire!")
+    print("Halting and catching fire!")
     print("Potential cause: " + error)
     print("=======ERROR END=======")
     print("")
-    os.exit(1)
+    sys.exit(1)
 
 def dbglog(info, target):
     if DEBUG:
@@ -33,7 +36,7 @@ def submit_result(data, message):
     try:
         from kaggle.api.kaggle_api_extended import KaggleApi
     except:
-        errlog("Kaggle API not found. Maybe install it via pip and make sure it is in the path, or venv, or whatever weird solution you are using to defeat pip's stupid side of things?")
+        errlog("Kaggle API not found. Maybe install it via pip and make sure it is in the path, or venv, or whatever weird solution you are using to defeat pip's stupidity?")
     api = KaggleApi()
     api.authenticate()
     api.competition_submit(data, message, COMPETITION)
@@ -65,14 +68,15 @@ def isWeekend(row):
 # cal = USFederalHolidayCalendar()
 # holidays = cal.holidays(start='1999-01-01', end='2018-12-31').to_pydatetime()
 
-# Christmas
+# Christmas - 23rd of December + 7 days
 christmas = datetime.datetime.strptime('12-23','%m-%d')
 christmas_week_dates = [ christmas + datetime.timedelta(days=i) for i in range(10) ]
 
-# Summer Vacation
+# Summer Vacation - Whole August
 summer_vacation = datetime.datetime.strptime('8-1','%m-%d')
 summer_vacation_week_dates = [ summer_vacation + datetime.timedelta(days=i) for i in range(31) ]
 
+# List of busiest US airports
 busy_airports = [
     "JFK",
     "LAX",
@@ -179,10 +183,8 @@ y_train = np.ravel(y_train)
 # Logistic Regression Approach
 # clf = LogisticRegression()
 
-# Random Forest Approach 
-max_features = 5
-
-clf = RandomForestClassifier(n_jobs=2, random_state=0, max_features=max_features)
+# Random Forest Approach
+clf = RandomForestClassifier(n_jobs=2, random_state=0, max_features=5)
 
 clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
