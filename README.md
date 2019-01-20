@@ -15,4 +15,4 @@ Any code you find in this repository is under the [GPL](https://en.wikipedia.org
 
 ### Footnote
 
-Special thanks to the [Thinking Cup] (https://www.thinkingcup.gr) which provided us with a steady coffee flow throughout the project implementation. 
+Special thanks to the [Thinking Cup](https://www.thinkingcup.gr) which provided us with a steady coffee flow throughout the project implementation. 
